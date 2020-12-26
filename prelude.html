@@ -1,8 +1,7 @@
 <!DOCTYPE HTML>
-<html><head><link rel="stylesheet" href="style.css" type="text/css"><meta charset="UTF-8"></head><body><div id="main-output"><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><h2>Dex prelude</h2>
+<html><head><link rel="stylesheet" href="/style.css" type="text/css"><meta charset="UTF-8"></head><body><div id="main-output"><div class="cell"><div class="prose-block"><h1>Dex prelude</h1>
 </div></div><div class="cell"><div class="prose-block"><p>Runs before every Dex program unless an alternative is provided with <code>--prelude</code>.</p>
-</div></div><div class="cell"><div class="prose-block"><p>Wrappers around primitives</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Wrappers around primitives</h2>
 </div></div><div class="cell"><div class="code-block"><span class="type-name">Unit</span> <span class="symbol">=</span> %<span class="type-name">UnitType</span>
 </div></div><div class="cell"><div class="code-block"><span class="type-name">Type</span> <span class="symbol">=</span> %<span class="type-name">TyKind</span>
 </div></div><div class="cell"><div class="code-block"><span class="type-name">Effects</span> <span class="symbol">=</span> %<span class="type-name">EffKind</span>
@@ -135,7 +134,7 @@
 </div></div><div class="cell"><div class="code-block"><span class="keyword">instance</span> float32Fractional <span class="symbol">:</span> <span class="type-name">Fractional</span> <span class="type-name">Float32</span> <span class="keyword">where</span>
   divide <span class="symbol">=</span> <span class="symbol">\</span>x<span class="symbol">:</span><span class="type-name">Float32</span> y<span class="symbol">:</span><span class="type-name">Float32</span><span class="symbol">.</span> %fdiv x y
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Basic polymorphic functions and types</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Basic polymorphic functions and types</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> (<span class="symbol">&amp;</span>) (a<span class="symbol">:</span><span class="type-name">Type</span>) (b<span class="symbol">:</span><span class="type-name">Type</span>) <span class="symbol">:</span> <span class="type-name">Type</span> <span class="symbol">=</span> %<span class="type-name">PairType</span> a b
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> (<span class="symbol">,</span>) (x<span class="command">:a</span>) (y<span class="command">:b</span>) <span class="symbol">:</span> (a <span class="symbol">&amp;</span> b) <span class="symbol">=</span> %pair x y
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> fst ((x<span class="symbol">,</span> _)<span class="symbol">:</span> (a <span class="symbol">&amp;</span> b)) <span class="symbol">:</span> a <span class="symbol">=</span> x
@@ -149,7 +148,7 @@
 </div></div><div class="cell"><div class="code-block">uncurry <span class="symbol">:</span> (a <span class="symbol">-&gt;</span> b <span class="symbol">-&gt;</span> c) <span class="symbol">-&gt;</span> (a <span class="symbol">&amp;</span> b) <span class="symbol">-&gt;</span> c <span class="symbol">=</span> <span class="symbol">\</span>f (x<span class="symbol">,</span>y)<span class="symbol">.</span> f x y
 </div></div><div class="cell"><div class="code-block">const <span class="symbol">:</span> a <span class="symbol">-&gt;</span> b <span class="symbol">-&gt;</span> a <span class="symbol">=</span> <span class="symbol">\</span>x _<span class="symbol">.</span> x
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Vector spaces</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Vector spaces</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">data</span> <span class="type-name">VSpace</span> a<span class="symbol">:</span><span class="type-name">Type</span> <span class="symbol">=</span> <span class="type-name">MkVSpace</span> (<span class="type-name">Add</span> a) (<span class="type-name">Float</span> <span class="symbol">-&gt;</span> a <span class="symbol">-&gt;</span> a)
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="symbol">@</span>superclass
@@ -164,7 +163,7 @@
 </div></div><div class="cell"><div class="code-block"><span class="symbol">@</span><span class="keyword">instance</span> tabVS  <span class="symbol">:</span> <span class="type-name">VSpace</span> a <span class="symbol">?=&gt;</span> <span class="type-name">VSpace</span> (n<span class="symbol">=&gt;</span>a) <span class="symbol">=</span> <span class="type-name">MkVSpace</span> tabAdd <span class="symbol">\</span>s xs<span class="symbol">.</span> <span class="keyword">for</span> i<span class="symbol">.</span> s <span class="symbol">.*</span> xs<span class="symbol">.</span>i
 </div></div><div class="cell"><div class="code-block"><span class="symbol">@</span><span class="keyword">instance</span> unitVS <span class="symbol">:</span> <span class="type-name">VSpace</span> <span class="type-name">Unit</span> <span class="symbol">=</span> <span class="type-name">MkVSpace</span> unitAdd <span class="symbol">\</span>s u<span class="symbol">.</span> ()
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Bool type</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Boolean type</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">data</span> <span class="type-name">Bool</span> <span class="symbol">=</span>
   <span class="type-name">False</span>
   <span class="type-name">True</span>
@@ -187,7 +186,7 @@
   x&#39; <span class="symbol">=</span> <span class="type-name">BToW8</span> x
   <span class="type-name">W8ToB</span> <span class="symbol">$</span> %not x&#39;
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Sum types</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Sum types</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">data</span> <span class="type-name">Maybe</span> a<span class="symbol">:</span><span class="type-name">Type</span> <span class="symbol">=</span>
   <span class="type-name">Nothing</span>
   <span class="type-name">Just</span> a
@@ -210,7 +209,7 @@
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> todo (a<span class="symbol">:</span><span class="type-name">Type</span>) <span class="symbol">?-&gt;</span> <span class="symbol">:</span> a <span class="symbol">=</span> %throwError a
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> throw (a<span class="symbol">:</span><span class="type-name">Type</span>) <span class="symbol">?-&gt;</span> <span class="symbol">:</span> a <span class="symbol">=</span> %throwError a
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Effects</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Effects</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> <span class="type-name">Ref</span> (r<span class="symbol">:</span><span class="type-name">Type</span>) (a<span class="symbol">:</span><span class="type-name">Type</span>) <span class="symbol">:</span> <span class="type-name">Type</span> <span class="symbol">=</span> %<span class="type-name">Ref</span> r a
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> get  (ref<span class="symbol">:</span><span class="type-name">Ref</span> h s)       <span class="symbol">:</span> {<span class="type-name">State</span> h} s    <span class="symbol">=</span> %get  ref
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> (<span class="symbol">:=</span>) (ref<span class="symbol">:</span><span class="type-name">Ref</span> h s) (x<span class="command">:s</span>) <span class="symbol">:</span> {<span class="type-name">State</span> h} <span class="type-name">Unit</span> <span class="symbol">=</span> %put  ref x
@@ -242,7 +241,7 @@
     <span class="keyword">def</span> explicitAction (h&#39;<span class="symbol">:</span><span class="type-name">Type</span>) (ref<span class="symbol">:</span><span class="type-name">Ref</span> h&#39; s) <span class="symbol">:</span> {<span class="type-name">State</span> h&#39;<span class="symbol">|</span>eff} a <span class="symbol">=</span> action ref
     %runState init explicitAction
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Type classes</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Type classes</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">data</span> <span class="type-name">Eq</span>  a<span class="symbol">:</span><span class="type-name">Type</span> <span class="symbol">=</span> <span class="type-name">MkEq</span>  (a <span class="symbol">-&gt;</span> a <span class="symbol">-&gt;</span> <span class="type-name">Bool</span>)
 </div></div><div class="cell"><div class="code-block"><span class="keyword">data</span> <span class="type-name">Ord</span> a<span class="symbol">:</span><span class="type-name">Type</span> <span class="symbol">=</span> <span class="type-name">MkOrd</span> (<span class="type-name">Eq</span> a) (a <span class="symbol">-&gt;</span> a <span class="symbol">-&gt;</span> <span class="type-name">Bool</span>) (a <span class="symbol">-&gt;</span> a <span class="symbol">-&gt;</span> <span class="type-name">Bool</span>)  <span class="comment">-- eq, gt, lt
 </span></div></div><div class="cell"><div class="code-block">
@@ -297,7 +296,7 @@
         ref <span class="symbol">+=</span> (<span class="type-name">IToF</span> (<span class="type-name">BToI</span> (xs<span class="symbol">.</span>i <span class="symbol">/=</span> ys<span class="symbol">.</span>i)))
     numDifferent <span class="symbol">==</span> 0<span class="symbol">.</span>0
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Transcencendental functions</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Transcencendental functions</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">interface</span> <span class="type-name">Floating</span> a<span class="symbol">:</span><span class="type-name">Type</span> <span class="keyword">where</span>
   exp    <span class="symbol">:</span> a <span class="symbol">-&gt;</span> a
   exp2   <span class="symbol">:</span> a <span class="symbol">-&gt;</span> a
@@ -372,7 +371,7 @@
   pow    <span class="symbol">=</span> <span class="symbol">\</span>x<span class="symbol">:</span><span class="type-name">Float32</span> y<span class="symbol">:</span><span class="type-name">Float32</span><span class="symbol">.</span> %fpow x y
   lgamma <span class="symbol">=</span> <span class="symbol">\</span>x<span class="symbol">:</span><span class="type-name">Float32</span><span class="symbol">.</span> %lgamma x
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Working with index sets</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Index set utilities</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> <span class="type-name">Range</span> (low<span class="symbol">:</span><span class="type-name">Int</span>) (high<span class="symbol">:</span><span class="type-name">Int</span>) <span class="symbol">:</span> <span class="type-name">Type</span> <span class="symbol">=</span> %<span class="type-name">IntRange</span> low high
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> <span class="type-name">Fin</span> (n<span class="symbol">:</span><span class="type-name">Int</span>) <span class="symbol">:</span> <span class="type-name">Type</span> <span class="symbol">=</span> <span class="type-name">Range</span> 0 n
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> ordinal (i<span class="command">:a</span>) <span class="symbol">:</span> <span class="type-name">Int</span> <span class="symbol">=</span> %toOrdinal i
@@ -396,7 +395,7 @@
 <span class="keyword">def</span> finOrd (n<span class="symbol">:</span><span class="type-name">Int</span>) <span class="symbol">?-&gt;</span> <span class="symbol">:</span> <span class="type-name">Ord</span> (<span class="type-name">Fin</span> n) <span class="symbol">=</span>
   <span class="type-name">MkOrd</span> finEq (<span class="symbol">\</span>x y<span class="symbol">.</span> ordinal x <span class="symbol">&gt;</span> ordinal y) (<span class="symbol">\</span>x y<span class="symbol">.</span> ordinal x <span class="symbol">&lt;</span> ordinal y)
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Misc</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Miscellaneous common utilities</h2>
 </div></div><div class="cell"><div class="code-block">pi <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span> 3<span class="symbol">.</span>141592653589793
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> id (x<span class="command">:a</span>) <span class="symbol">:</span> a <span class="symbol">=</span> x
@@ -439,7 +438,6 @@
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> any (xs<span class="command">:n</span><span class="symbol">=&gt;</span><span class="type-name">Bool</span>) <span class="symbol">:</span> <span class="type-name">Bool</span> <span class="symbol">=</span> reduce <span class="type-name">False</span> (<span class="symbol">||</span>) xs
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> all (xs<span class="command">:n</span><span class="symbol">=&gt;</span><span class="type-name">Bool</span>) <span class="symbol">:</span> <span class="type-name">Bool</span> <span class="symbol">=</span> reduce <span class="type-name">True</span>  (<span class="symbol">&amp;&amp;</span>) xs
 </div></div><div class="cell"><div class="code-block">
-
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> applyN (n<span class="symbol">:</span><span class="type-name">Int</span>) (x<span class="command">:a</span>) (f<span class="command">:a</span> <span class="symbol">-&gt;</span> a) <span class="symbol">:</span> a <span class="symbol">=</span>
   snd <span class="symbol">$</span> withState x <span class="symbol">\</span>ref<span class="symbol">.</span> <span class="keyword">for</span> _<span class="symbol">:</span>(<span class="type-name">Fin</span> n)<span class="symbol">.</span>
     ref <span class="symbol">:=</span> f (get ref)
@@ -463,7 +461,7 @@
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> inner (x<span class="command">:n</span><span class="symbol">=&gt;</span><span class="type-name">Float</span>) (mat<span class="command">:n</span><span class="symbol">=&gt;</span>m<span class="symbol">=&gt;</span><span class="type-name">Float</span>) (y<span class="command">:m</span><span class="symbol">=&gt;</span><span class="type-name">Float</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
   fsum <span class="symbol">\</span>(i<span class="symbol">,</span>j)<span class="symbol">.</span> x<span class="symbol">.</span>i <span class="symbol">*</span> mat<span class="symbol">.</span>i<span class="symbol">.</span>j <span class="symbol">*</span> y<span class="symbol">.</span>j
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Functions for working with the pseudorandom number generator</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Pseudorandom number generator utilities</h2>
 </div></div><div class="cell"><div class="code-block"><span class="comment">-- TODO: newtype
 </span></div></div><div class="cell"><div class="code-block"><span class="type-name">Key</span> <span class="symbol">=</span> <span class="type-name">Int64</span>
 </div></div><div class="cell"><div class="code-block">
@@ -471,15 +469,10 @@
   y64 <span class="symbol">=</span> <span class="type-name">IToI64</span> y
   %ffi threefry2x32 <span class="type-name">Int64</span> x y64
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> newKey (x<span class="symbol">:</span><span class="type-name">Int</span>) <span class="symbol">:</span> <span class="type-name">Key</span> <span class="symbol">=</span> hash (<span class="type-name">IToI64</span> 0) x
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> splitKey (k<span class="symbol">:</span><span class="type-name">Key</span>) <span class="symbol">:</span> (<span class="type-name">Key</span> <span class="symbol">&amp;</span> <span class="type-name">Key</span>) <span class="symbol">=</span> (hash k 0<span class="symbol">,</span> hash k 1)
-</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> splitKey3 (k<span class="symbol">:</span><span class="type-name">Key</span>) <span class="symbol">:</span> (<span class="type-name">Key</span> <span class="symbol">&amp;</span> <span class="type-name">Key</span> <span class="symbol">&amp;</span> <span class="type-name">Key</span>) <span class="symbol">=</span>
-  (k1<span class="symbol">,</span> k&#39;) <span class="symbol">=</span> splitKey k
-  (k2<span class="symbol">,</span> k3) <span class="symbol">=</span> splitKey k&#39;
-  (k1<span class="symbol">,</span> k2<span class="symbol">,</span> k3)
-</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> many (f<span class="symbol">:</span><span class="type-name">Key</span><span class="symbol">-&gt;</span>a) (k<span class="symbol">:</span><span class="type-name">Key</span>) (i<span class="command">:n</span>) <span class="symbol">:</span> a <span class="symbol">=</span> f (hash k (ordinal i))
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> ixkey (k<span class="symbol">:</span><span class="type-name">Key</span>) (i<span class="command">:n</span>) <span class="symbol">:</span> <span class="type-name">Key</span> <span class="symbol">=</span> hash k (ordinal i)
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> ixkey2 (k<span class="symbol">:</span><span class="type-name">Key</span>) (i<span class="command">:n</span>) (j<span class="command">:m</span>) <span class="symbol">:</span> <span class="type-name">Key</span> <span class="symbol">=</span> hash (hash k (ordinal i)) (ordinal j)
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> splitKey (n<span class="symbol">:</span><span class="type-name">Int</span>) <span class="symbol">?-&gt;</span> (k<span class="symbol">:</span><span class="type-name">Key</span>) <span class="symbol">:</span> <span class="type-name">Fin</span> n <span class="symbol">=&gt;</span> <span class="type-name">Key</span> <span class="symbol">=</span> <span class="keyword">for</span> i<span class="symbol">.</span> ixkey k i
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> rand (k<span class="symbol">:</span><span class="type-name">Key</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span> <span class="type-name">F64ToF</span> <span class="symbol">$</span> %ffi randunif <span class="type-name">Float64</span> k
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> randVec (n<span class="symbol">:</span><span class="type-name">Int</span>) (f<span class="symbol">:</span> <span class="type-name">Key</span> <span class="symbol">-&gt;</span> a) (k<span class="symbol">:</span> <span class="type-name">Key</span>) <span class="symbol">:</span> <span class="type-name">Fin</span> n <span class="symbol">=&gt;</span> a <span class="symbol">=</span>
   <span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> n)<span class="symbol">.</span> f (ixkey k i)
@@ -488,7 +481,7 @@
   <span class="keyword">for</span> i j<span class="symbol">.</span> f (ixkey2 k i j)
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> randn (k<span class="symbol">:</span><span class="type-name">Key</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
-  (k1<span class="symbol">,</span> k2) <span class="symbol">=</span> splitKey k
+  [k1<span class="symbol">,</span> k2] <span class="symbol">=</span> splitKey k
   u1 <span class="symbol">=</span> rand k1
   u2 <span class="symbol">=</span> rand k2
   sqrt ((<span class="symbol">-</span>2<span class="symbol">.</span>0) <span class="symbol">*</span> log u1) <span class="symbol">*</span> cos (2<span class="symbol">.</span>0 <span class="symbol">*</span> pi <span class="symbol">*</span> u2)
@@ -505,7 +498,29 @@
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> randnVec (n<span class="symbol">:</span><span class="type-name">Type</span>) <span class="symbol">?-&gt;</span> (k<span class="symbol">:</span><span class="type-name">Key</span>) <span class="symbol">:</span> n<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="symbol">=</span>
   <span class="keyword">for</span> i<span class="symbol">.</span> randn (ixkey k i)
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>min / max etc</p>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> cumSum (xs<span class="symbol">:</span> n<span class="symbol">=&gt;</span><span class="type-name">Float</span>) <span class="symbol">:</span> n<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="symbol">=</span>
+  fst <span class="symbol">$</span> withState 0<span class="symbol">.</span>0 <span class="symbol">\</span>total<span class="symbol">.</span>
+    <span class="keyword">for</span> i<span class="symbol">.</span>
+      newTotal <span class="symbol">=</span> get total <span class="symbol">+</span> xs<span class="symbol">.</span>i
+      total <span class="symbol">:=</span> newTotal
+      newTotal
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="keyword">interface</span> <span class="type-name">Arbitrary</span> a<span class="symbol">:</span><span class="type-name">Type</span> <span class="keyword">where</span>
+  arb <span class="symbol">:</span> <span class="type-name">Key</span> <span class="symbol">-&gt;</span> a
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="keyword">instance</span> float32Arb <span class="symbol">:</span> <span class="type-name">Arbitrary</span> <span class="type-name">Float32</span> <span class="keyword">where</span>
+  arb <span class="symbol">=</span> randn
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="keyword">instance</span> in32Arb <span class="symbol">:</span> <span class="type-name">Arbitrary</span> <span class="type-name">Int32</span> <span class="keyword">where</span>
+  arb <span class="symbol">=</span> <span class="symbol">\</span>key<span class="symbol">.</span> <span class="type-name">FToI</span> <span class="symbol">$</span> randn key <span class="symbol">*</span> 5<span class="symbol">.</span>0
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="keyword">instance</span> tabArb <span class="symbol">:</span> <span class="type-name">Arbitrary</span> a <span class="symbol">?=&gt;</span> <span class="type-name">Arbitrary</span> (n<span class="symbol">=&gt;</span>a) <span class="keyword">where</span>
+  arb <span class="symbol">=</span> <span class="symbol">\</span>key<span class="symbol">.</span> <span class="keyword">for</span> i<span class="symbol">.</span> arb <span class="symbol">$</span> ixkey key i
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="keyword">instance</span> finArb <span class="symbol">:</span> n<span class="symbol">:</span><span class="type-name">Int</span> <span class="symbol">?-&gt;</span> <span class="type-name">Arbitrary</span> (<span class="type-name">Fin</span> n) <span class="keyword">where</span>
+  arb <span class="symbol">=</span> randIdx
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="prose-block"><h2>Reduction functions</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> minBy (_<span class="symbol">:</span><span class="type-name">Ord</span> o) <span class="symbol">?=&gt;</span> (f<span class="command">:a</span><span class="symbol">-&gt;</span>o) (x<span class="command">:a</span>) (y<span class="command">:a</span>) <span class="symbol">:</span> a <span class="symbol">=</span> select (f x <span class="symbol">&lt;</span> f y) x y
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> maxBy (_<span class="symbol">:</span><span class="type-name">Ord</span> o) <span class="symbol">?=&gt;</span> (f<span class="command">:a</span><span class="symbol">-&gt;</span>o) (x<span class="command">:a</span>) (y<span class="command">:a</span>) <span class="symbol">:</span> a <span class="symbol">=</span> select (f x <span class="symbol">&gt;</span> f y) x y
 </div></div><div class="cell"><div class="code-block">
@@ -530,7 +545,7 @@
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> clip (_<span class="symbol">:</span><span class="type-name">Ord</span> a) <span class="symbol">?=&gt;</span> ((low<span class="symbol">,</span>high)<span class="symbol">:</span>(a<span class="symbol">&amp;</span>a)) (x<span class="command">:a</span>) <span class="symbol">:</span> a <span class="symbol">=</span>
   min high <span class="symbol">$</span> max low x
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Automatic differentiation</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Automatic differentiation</h2>
 </div></div><div class="cell"><div class="code-block"><span class="comment">-- TODO: add vector space constraints
 </span></div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> linearize (f<span class="command">:a</span><span class="symbol">-&gt;</span>b) (x<span class="command">:a</span>) <span class="symbol">:</span> (b <span class="symbol">&amp;</span> a <span class="symbol">--</span>o b) <span class="symbol">=</span> %linearize f x
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> jvp (f<span class="command">:a</span><span class="symbol">-&gt;</span>b) (x<span class="command">:a</span>) <span class="symbol">:</span> a <span class="symbol">--</span>o b <span class="symbol">=</span> snd (linearize f x)
@@ -587,7 +602,7 @@
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> checkDeriv (f<span class="symbol">:</span><span class="type-name">Float</span><span class="symbol">-&gt;</span><span class="type-name">Float</span>) (x<span class="symbol">:</span><span class="type-name">Float</span>) <span class="symbol">:</span> <span class="type-name">Bool</span> <span class="symbol">=</span>
   checkDerivBase f x <span class="symbol">&amp;&amp;</span> checkDerivBase (deriv f) x
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Control flow</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Control flow functions</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> while
     (eff<span class="symbol">:</span><span class="type-name">Effects</span>) <span class="symbol">?-&gt;</span>
     (cond<span class="symbol">:</span> <span class="type-name">Unit</span> <span class="symbol">-&gt;</span> {<span class="symbol">|</span>eff} <span class="type-name">Bool</span>)
@@ -596,7 +611,46 @@
   cond&#39; <span class="symbol">:</span> <span class="type-name">Unit</span> <span class="symbol">-&gt;</span> {<span class="symbol">|</span>eff} <span class="type-name">Word8</span> <span class="symbol">=</span> <span class="symbol">\</span>_<span class="symbol">.</span> <span class="type-name">BToW8</span> <span class="symbol">$</span> cond ()
   %while cond&#39; body
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Vector support</p>
+</div></div><div class="cell"><div class="code-block"><span class="keyword">data</span> <span class="type-name">IterResult</span> a<span class="symbol">:</span><span class="type-name">Type</span> b<span class="symbol">:</span><span class="type-name">Type</span> <span class="symbol">=</span>
+  <span class="type-name">Continue</span> a
+  <span class="type-name">Done</span> b
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="comment">-- A little iteration combinator
+</span></div></div><div class="cell"><div class="code-block"><span class="comment">-- TODO: allow effects (bug #267)
+</span></div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> iter (init<span class="command">:a</span>) (body<span class="symbol">:</span> <span class="type-name">Int</span> <span class="symbol">-&gt;</span> a <span class="symbol">-&gt;</span> <span class="type-name">IterResult</span> a b) <span class="symbol">:</span> b  <span class="symbol">=</span>
+  result <span class="symbol">=</span> snd <span class="symbol">$</span> withState <span class="type-name">Nothing</span> <span class="symbol">\</span>resultRef<span class="symbol">.</span>
+    withState init <span class="symbol">\</span>carryRef<span class="symbol">.</span>
+      withState 0 <span class="symbol">\</span>i<span class="symbol">.</span>
+        while (<span class="symbol">\</span>()<span class="symbol">.</span> isNothing (get resultRef)) <span class="symbol">\</span>()<span class="symbol">.</span>
+          <span class="keyword">case</span> body (get i) (get carryRef) <span class="keyword">of</span>
+            <span class="type-name">Continue</span> carry <span class="symbol">-&gt;</span>
+              i <span class="symbol">:=</span> get i <span class="symbol">+</span> 1
+              carryRef <span class="symbol">:=</span> carry
+            <span class="type-name">Done</span> result <span class="symbol">-&gt;</span>
+              resultRef <span class="symbol">:=</span> <span class="type-name">Just</span> result
+  <span class="keyword">case</span> result <span class="keyword">of</span>
+    <span class="type-name">Just</span> ans <span class="symbol">-&gt;</span> ans
+    <span class="type-name">Nothing</span> <span class="symbol">-&gt;</span> todo  <span class="comment">-- should be unreachable
+</span></div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="comment">-- returns the highest index `i` such that `xs.i &lt;= x`
+</span></div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> searchSorted (_<span class="symbol">:</span><span class="type-name">Ord</span> a) <span class="symbol">?=&gt;</span> (xs<span class="command">:n</span><span class="symbol">=&gt;</span>a) (x<span class="command">:a</span>) <span class="symbol">:</span> <span class="type-name">Maybe</span> n <span class="symbol">=</span>
+  <span class="keyword">case</span> size n <span class="symbol">==</span> 0 <span class="keyword">of</span>
+    <span class="type-name">True</span> <span class="symbol">-&gt;</span> <span class="type-name">Nothing</span>
+    <span class="type-name">False</span> <span class="symbol">-&gt;</span> <span class="keyword">case</span> x <span class="symbol">&lt;</span> xs<span class="symbol">.</span>(fromOrdinal _ 0) <span class="keyword">of</span>
+      <span class="type-name">True</span> <span class="symbol">-&gt;</span> <span class="type-name">Nothing</span>
+      <span class="type-name">False</span> <span class="symbol">-&gt;</span>
+        iter (0<span class="symbol">,</span> size n) <span class="symbol">\</span>_ (low<span class="symbol">,</span> high)<span class="symbol">.</span>
+          numLeft <span class="symbol">=</span> high <span class="symbol">-</span> low
+          <span class="keyword">case</span> numLeft <span class="symbol">==</span> 1 <span class="keyword">of</span>
+            <span class="type-name">True</span> <span class="symbol">-&gt;</span> <span class="type-name">Done</span> <span class="symbol">$</span> <span class="type-name">Just</span> <span class="symbol">$</span> fromOrdinal _ low
+            <span class="type-name">False</span> <span class="symbol">-&gt;</span>
+              centerIx <span class="symbol">=</span> low <span class="symbol">+</span> idiv (high <span class="symbol">-</span> low) 2
+              <span class="keyword">case</span> x <span class="symbol">&lt;</span> xs<span class="symbol">.</span>(fromOrdinal _ centerIx) <span class="keyword">of</span>
+                <span class="type-name">True</span>  <span class="symbol">-&gt;</span> <span class="type-name">Continue</span> (low<span class="symbol">,</span> centerIx)
+                <span class="type-name">False</span> <span class="symbol">-&gt;</span> <span class="type-name">Continue</span> (centerIx<span class="symbol">,</span> high)
+</div></div><div class="cell"><div class="code-block">
+
+</div></div><div class="cell"><div class="prose-block"><h2>Vector support</h2>
 </div></div><div class="cell"><div class="code-block"><span class="comment">-- TODO: Reenable vector suport once fixed-width types are supported.
 </span></div></div><div class="cell"><div class="code-block"><span class="comment">-- def UNSAFEFromOrdinal (n : Type) (i : Int) : n = %unsafeAsIndex n i
 </span></div></div><div class="cell"><div class="code-block"><span class="symbol">--</span>
@@ -631,7 +685,7 @@
 </span></div></div><div class="cell"><div class="code-block"><span class="comment">-- @instance vectorFloatVSpace : VSpace VectorFloat =
 </span></div></div><div class="cell"><div class="code-block"><span class="comment">--   MkVSpace vectorFloatAdd \x v. broadcastVector x * v
 </span></div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Tiling</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Tiling functions</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> <span class="type-name">Tile</span> (n <span class="symbol">:</span> <span class="type-name">Type</span>) (m <span class="symbol">:</span> <span class="type-name">Type</span>) <span class="symbol">:</span> <span class="type-name">Type</span> <span class="symbol">=</span> %<span class="type-name">IndexSlice</span> n m
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="comment">-- One can think of instances of `Tile n m` as injective functions `m -&gt; n`,
@@ -658,7 +712,7 @@
 </span></div></div><div class="cell"><div class="code-block"><span class="comment">--              arr.(t +&gt; UNSAFEFromOrdinal idx 2)
 </span></div></div><div class="cell"><div class="code-block"><span class="comment">--              arr.(t +&gt; UNSAFEFromOrdinal idx 3))
 </span></div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Numerical utilities</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Numerical utilities</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> logsumexp (x<span class="symbol">:</span> n<span class="symbol">=&gt;</span><span class="type-name">Float</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
   m <span class="symbol">=</span> maximum x
   m <span class="symbol">+</span> (log <span class="symbol">$</span> sum <span class="keyword">for</span> i<span class="symbol">.</span> exp (x<span class="symbol">.</span>i <span class="symbol">-</span> m))
@@ -677,15 +731,14 @@
   <span class="comment">-- Evaluate a polynomial at x.  Same as Numpy&#39;s polyval.
 </span>  fold zero <span class="symbol">\</span>i c<span class="symbol">.</span> coefficients<span class="symbol">.</span>i <span class="symbol">+</span> x <span class="symbol">.*</span> c
 </div></div><div class="cell"><div class="code-block">
-
-</div></div><div class="cell"><div class="prose-block"><p>Monoid</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Monoid typeclass</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">interface</span> <span class="type-name">Monoid</span> a<span class="symbol">:</span><span class="type-name">Type</span> <span class="keyword">where</span>
   mempty <span class="symbol">:</span> a
   mcombine <span class="symbol">:</span> a <span class="symbol">-&gt;</span> a <span class="symbol">-&gt;</span> a  <span class="comment">-- can&#39;t use `&lt;&gt;` just for parser reasons?
 </span></div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block">(<span class="symbol">&lt;&gt;</span>) <span class="symbol">:</span> <span class="type-name">Monoid</span> a <span class="symbol">?=&gt;</span> a <span class="symbol">-&gt;</span> a <span class="symbol">-&gt;</span> a <span class="symbol">=</span> mcombine
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Length-erased lists</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Length-erased lists</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">data</span> <span class="type-name">List</span> a<span class="symbol">:</span><span class="type-name">Type</span> <span class="symbol">=</span>
   <span class="type-name">AsList</span> n<span class="symbol">:</span><span class="type-name">Int</span> foo<span class="symbol">:</span>(<span class="type-name">Fin</span> n <span class="symbol">=&gt;</span> a)
 </div></div><div class="cell"><div class="code-block">
@@ -701,7 +754,7 @@
         <span class="type-name">True</span>  <span class="symbol">-&gt;</span> xs<span class="symbol">.</span>(unsafeFromOrdinal _ i&#39;)
         <span class="type-name">False</span> <span class="symbol">-&gt;</span> ys<span class="symbol">.</span>(unsafeFromOrdinal _ (i&#39; <span class="symbol">-</span> nx))
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><p>Isomorphisms</p>
+</div></div><div class="cell"><div class="prose-block"><h2>Isomorphisms</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">data</span> <span class="type-name">Iso</span> a<span class="symbol">:</span><span class="type-name">Type</span> b<span class="symbol">:</span><span class="type-name">Type</span> <span class="symbol">=</span> <span class="type-name">MkIso</span> { fwd<span class="symbol">:</span> a <span class="symbol">-&gt;</span> b <span class="symbol">&amp;</span> bwd<span class="symbol">:</span> b <span class="symbol">-&gt;</span> a }
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> appIso (iso<span class="symbol">:</span> <span class="type-name">Iso</span> a b) (x<span class="command">:a</span>) <span class="symbol">:</span> b <span class="symbol">=</span>
@@ -791,6 +844,9 @@
 </div></div><div class="cell"><div class="code-block"><span class="keyword">interface</span> <span class="type-name">Show</span> a<span class="symbol">:</span><span class="type-name">Type</span> <span class="keyword">where</span>
   show <span class="symbol">:</span> a <span class="symbol">-&gt;</span> <span class="type-name">String</span>
 </div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="keyword">instance</span> showString <span class="symbol">:</span> <span class="type-name">Show</span> <span class="type-name">String</span> <span class="keyword">where</span>
+  show <span class="symbol">=</span> id
+</div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="keyword">instance</span> showInt32 <span class="symbol">:</span> <span class="type-name">Show</span> <span class="type-name">Int32</span> <span class="keyword">where</span>
   show <span class="symbol">=</span> <span class="symbol">\</span>x<span class="symbol">:</span> <span class="type-name">Int32</span><span class="symbol">.</span>
     (n<span class="symbol">,</span> ptr) <span class="symbol">=</span> %ffi showInt32 (<span class="type-name">Int32</span> <span class="symbol">&amp;</span> <span class="type-name">CharPtr</span>) x
@@ -818,7 +874,7 @@
 </div></div><div class="cell"><div class="code-block"><span class="comment">-- pipe-like reverse function application
 </span></div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> (<span class="symbol">|&gt;</span>) (x<span class="command">:a</span>) (f<span class="symbol">:</span> a <span class="symbol">-&gt;</span> b) <span class="symbol">:</span> b <span class="symbol">=</span> f x
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><h2>Floating point helper functions</h2>
+</div></div><div class="cell"><div class="prose-block"><h2>Floating-point helper functions</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> sign (x<span class="symbol">:</span><span class="type-name">Float</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
   <span class="keyword">case</span> x <span class="symbol">&gt;</span> 0<span class="symbol">.</span>0 <span class="keyword">of</span>
     <span class="type-name">True</span> <span class="symbol">-&gt;</span> 1<span class="symbol">.</span>0
@@ -845,7 +901,7 @@
 </span></div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> either_is_nan (x<span class="symbol">:</span><span class="type-name">Float</span>) (y<span class="symbol">:</span><span class="type-name">Float</span>) <span class="symbol">:</span> <span class="type-name">Bool</span> <span class="symbol">=</span> (isnan x) <span class="symbol">||</span> (isnan y)
 </div></div><div class="cell"><div class="code-block">
 
-</div></div><div class="cell"><div class="prose-block"><h2>Trigonometric functions.</h2>
+</div></div><div class="cell"><div class="prose-block"><h2>Trigonometric functions</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> atan_inner (x<span class="symbol">:</span><span class="type-name">Float</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
   <span class="comment">-- From &quot;Computing accurate Horner form approximations to
 </span>  <span class="comment">-- special functions in finite precision arithmetic&quot;
@@ -876,7 +932,7 @@
   (min_abs_x_y<span class="symbol">,</span> max_abs_x_y) <span class="symbol">=</span> min_and_max abs_x abs_y
   a <span class="symbol">=</span> atan_inner (min_abs_x_y <span class="symbol">/</span> max_abs_x_y)
   a <span class="symbol">=</span> select (abs_x <span class="symbol">&lt;=</span> abs_y) ((pi <span class="symbol">/</span> 2<span class="symbol">.</span>0) <span class="symbol">-</span>a) a
-  a <span class="symbol">=</span> select (x <span class="symbol">&lt;</span> 0<span class="symbol">.</span>0) pi a
+  a <span class="symbol">=</span> select (x <span class="symbol">&lt;</span> 0<span class="symbol">.</span>0) (pi <span class="symbol">-</span> a) a
   t <span class="symbol">=</span> select (x <span class="symbol">&lt;</span> 0<span class="symbol">.</span>0) pi 0<span class="symbol">.</span>0
   a <span class="symbol">=</span> select (y <span class="symbol">==</span> 0<span class="symbol">.</span>0) t a
   t <span class="symbol">=</span> select (x <span class="symbol">&lt;</span> 0<span class="symbol">.</span>0) (3<span class="symbol">.</span>0 <span class="symbol">*</span> pi <span class="symbol">/</span> 4<span class="symbol">.</span>0) (pi <span class="symbol">/</span> 4<span class="symbol">.</span>0)
@@ -886,7 +942,6 @@
 </span></div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> atan (x<span class="symbol">:</span><span class="type-name">Float</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span> atan2 x 1<span class="symbol">.</span>0
 </div></div><div class="cell"><div class="code-block">
-
 </div></div><div class="cell"><div class="prose-block"><h2>Complex numbers</h2>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">data</span> <span class="type-name">Complex</span> <span class="symbol">=</span> <span class="type-name">MkComplex</span> <span class="type-name">Float</span> <span class="type-name">Float</span>  <span class="comment">-- real, imaginary
 </span></div></div><div class="cell"><div class="code-block">
@@ -1019,13 +1074,17 @@
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> ptrToTab (n<span class="symbol">:</span><span class="type-name">Int</span>) (ptr<span class="symbol">:</span><span class="type-name">Ptr</span> <span class="type-name">Float</span>) <span class="symbol">:</span> <span class="type-name">Fin</span> n <span class="symbol">=&gt;</span> <span class="type-name">Float</span> <span class="symbol">=</span>
   <span class="keyword">for</span> i<span class="symbol">:</span>(<span class="type-name">Fin</span> n)<span class="symbol">.</span> %ptrLoad (%ptrOffset ptr (ordinal i))
 </div></div><div class="cell"><div class="code-block">
-</div></div><div class="cell"><div class="prose-block"><h2>Misc</h2>
+</div></div><div class="cell"><div class="prose-block"><h2>Miscellaneous utilities</h2>
 </div></div><div class="cell"><div class="code-block"><span class="comment">-- TODO: could make an `unsafeCastIndex` and this could avoid the runtime copy
 </span></div></div><div class="cell"><div class="code-block"><span class="comment">-- TODO: safe (runtime-checked) and unsafe versions
 </span></div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> castTable (m<span class="symbol">:</span><span class="type-name">Type</span>) (xs<span class="command">:n</span><span class="symbol">=&gt;</span>a) <span class="symbol">:</span> m<span class="symbol">=&gt;</span>a <span class="symbol">=</span>
   <span class="keyword">case</span> size m <span class="symbol">==</span> size n <span class="keyword">of</span>
      <span class="type-name">True</span>  <span class="symbol">-&gt;</span> <span class="keyword">for</span> i<span class="symbol">.</span> xs<span class="symbol">.</span>(unsafeFromOrdinal _ (ordinal i))
      <span class="type-name">False</span> <span class="symbol">-&gt;</span> throw
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> reverse (x<span class="command">:n</span><span class="symbol">=&gt;</span>a) <span class="symbol">:</span> n<span class="symbol">=&gt;</span>a <span class="symbol">=</span>
+  s <span class="symbol">=</span> size n
+  <span class="keyword">for</span> i<span class="symbol">.</span> x<span class="symbol">.</span>((s <span class="symbol">-</span> 1 <span class="symbol">-</span> ordinal i)<span class="symbol">@</span>_)
 </div></div><div class="cell"><div class="code-block">
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> toList (n<span class="symbol">:</span><span class="type-name">Type</span>) <span class="symbol">?-&gt;</span> (xs<span class="command">:n</span><span class="symbol">=&gt;</span>a) <span class="symbol">:</span> <span class="type-name">List</span> a <span class="symbol">=</span>
   n&#39; <span class="symbol">=</span> size n
@@ -1080,4 +1139,32 @@
         eltIdxVal <span class="symbol">=</span> get eltIdx
         eltIdx <span class="symbol">:=</span> eltIdxVal <span class="symbol">+</span> 1
         xs<span class="symbol">.</span>(eltIdxVal<span class="symbol">@</span>_)
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> cumSumLow (xs<span class="symbol">:</span> n<span class="symbol">=&gt;</span><span class="type-name">Float</span>) <span class="symbol">:</span> n<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="symbol">=</span>
+  fst <span class="symbol">$</span> withState 0<span class="symbol">.</span>0 <span class="symbol">\</span>total<span class="symbol">.</span>
+    <span class="keyword">for</span> i<span class="symbol">.</span>
+      oldTotal <span class="symbol">=</span> get total
+      total <span class="symbol">:=</span> oldTotal <span class="symbol">+</span> xs<span class="symbol">.</span>i
+      oldTotal
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="comment">-- cdf should include 0.0 but not 1.0
+</span></div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> categoricalFromCDF (cdf<span class="symbol">:</span> n<span class="symbol">=&gt;</span><span class="type-name">Float</span>) (key<span class="symbol">:</span> <span class="type-name">Key</span>) <span class="symbol">:</span> n <span class="symbol">=</span>
+  r <span class="symbol">=</span> rand key
+  <span class="keyword">case</span> searchSorted cdf r <span class="keyword">of</span>
+    <span class="type-name">Just</span> i <span class="symbol">-&gt;</span> i
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> normalizePdf (xs<span class="symbol">:</span> d<span class="symbol">=&gt;</span><span class="type-name">Float</span>) <span class="symbol">:</span> d<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="symbol">=</span> xs <span class="symbol">/</span> sum xs
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> cdfForCategorical (logprobs<span class="symbol">:</span> n<span class="symbol">=&gt;</span><span class="type-name">Float</span>) <span class="symbol">:</span> n<span class="symbol">=&gt;</span><span class="type-name">Float</span> <span class="symbol">=</span>
+  maxLogProb <span class="symbol">=</span> maximum logprobs
+  cumSumLow <span class="symbol">$</span> normalizePdf <span class="symbol">$</span> map exp <span class="symbol">$</span> <span class="keyword">for</span> i<span class="symbol">.</span> logprobs<span class="symbol">.</span>i <span class="symbol">-</span> maxLogProb
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> categorical (logprobs<span class="symbol">:</span> n<span class="symbol">=&gt;</span><span class="type-name">Float</span>) (key<span class="symbol">:</span> <span class="type-name">Key</span>) <span class="symbol">:</span> n <span class="symbol">=</span>
+  categoricalFromCDF (cdfForCategorical logprobs) key
+</div></div><div class="cell"><div class="code-block">
+</div></div><div class="cell"><div class="code-block"><span class="comment">-- batch variant to share the work of forming the cumsum
+</span></div></div><div class="cell"><div class="code-block"><span class="comment">-- (alternatively we could rely on hoisting of loop constants)
+</span></div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> categoricalBatch (logprobs<span class="symbol">:</span> n<span class="symbol">=&gt;</span><span class="type-name">Float</span>) (key<span class="symbol">:</span> <span class="type-name">Key</span>) <span class="symbol">:</span> m<span class="symbol">=&gt;</span>n <span class="symbol">=</span>
+  cdf <span class="symbol">=</span> cdfForCategorical logprobs
+  <span class="keyword">for</span> i<span class="symbol">.</span> categoricalFromCDF cdf <span class="symbol">$</span> ixkey key i
 </div></div></div></body></html>

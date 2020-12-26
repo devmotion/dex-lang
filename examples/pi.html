@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
-<html><head><link rel="stylesheet" href="style.css" type="text/css"><meta charset="UTF-8"></head><body><div id="main-output"><div class="cell"><div class="prose-block"><h1>Monte Carlo estimates of pi</h1>
+<html><head><link rel="stylesheet" href="/style.css" type="text/css"><meta charset="UTF-8"></head><body><div id="main-output"><div class="cell"><div class="prose-block"><h1>Monte Carlo estimates of pi</h1>
 </div></div><div class="cell"><div class="code-block"><span class="keyword">def</span> estimatePiArea (key<span class="symbol">:</span><span class="type-name">Key</span>) <span class="symbol">:</span> <span class="type-name">Float</span> <span class="symbol">=</span>
-  (k1<span class="symbol">,</span> k2) <span class="symbol">=</span> splitKey key
+  [k1<span class="symbol">,</span> k2] <span class="symbol">=</span> splitKey key
   x <span class="symbol">=</span> rand k1
   y <span class="symbol">=</span> rand k2
   inBounds <span class="symbol">=</span> (sq x <span class="symbol">+</span> sq y) <span class="symbol">&lt;</span> 1<span class="symbol">.</span>0
